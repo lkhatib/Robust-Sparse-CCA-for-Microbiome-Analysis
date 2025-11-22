@@ -190,15 +190,3 @@ git branch -M main
 git remote add origin <your-github-repo-url>
 git push -u origin main
 ```
-
----
-
-## 📚 **Citation**
-
-If you use this pipeline or RoSCA in your work, please cite the original RoSCA method and this repository.
-
----
-
-## 📧 **Contact**
-
-For questions or contributions, please open an issue or submit a pull request.
