@@ -1,24 +1,23 @@
-RoSCA Pipeline
+# **RoSCA Pipeline**
+*A reproducible Snakemake workflow for running the Robust Sparse Canonical Analysis (RoSCA) model on microbiome and dietary datasets.*
 
-A reproducible Snakemake workflow for running the Robust Sparse Canonical Analysis (RoSCA) model on microbiome and dietary datasets.
-
-This repository provides an end-to-end, reproducible workflow for running RoSCA on the THDMI dataset (or any microbiome × metadata dataset).
+This repository provides an end-to-end, reproducible workflow for running **RoSCA** on the THDMI dataset (or any microbiome × metadata dataset).  
 It includes:
 
-A Snakemake workflow
+- A **Snakemake workflow**
+- A conda environment (`envs/rosca.yaml`)
+- All analysis scripts (`src/rosca_pipeline/`)
+- A minimal test dataset (`tests/thdmi/`)
+- Optional hyperparameter tuning + plotting modules
 
-A conda environment (envs/rosca.yaml)
+The workflow performs:  
+**preprocessing → model fitting → optional tuning → output → optional plotting**
 
-All analysis scripts (src/rosca_pipeline/)
+---
 
-A minimal test dataset (tests/thdmi/)
+## 🔧 **Repository Structure**
 
-Optional hyperparameter tuning + plotting modules
-
-The workflow performs:
-preprocessing → model fitting → optional tuning → output → optional plotting
-
-🔧 Repository Structure
+```
 rosca-pipeline/
 ├── Snakefile
 ├── README.md
@@ -47,128 +46,159 @@ rosca-pipeline/
 │       │   └── THDMI.fit_warning.txt
 │       └── output/   # Snakemake writes here
 └── results/          # Large real outputs (gitignored)
+```
 
-🚀 Quickstart
-Install Snakemake
+---
+
+## 🚀 **Quickstart**
+
+### **Install Snakemake**
+
+```bash
 conda install -c conda-forge snakemake
+```
 
-Run the full workflow
+### **Run the full workflow**
 
 From the repository root:
 
+```bash
 snakemake --use-conda --cores 4
-
+```
 
 Snakemake will:
 
-Create the environment from envs/rosca.yaml
+1. Create the environment from `envs/rosca.yaml`
+2. Load the biom + metadata files
+3. Run RoSCA
+4. Produce:
+   - `THDMI.summary.json`
+   - `THDMI.fit_warning.txt`
 
-Load the biom + metadata files
+---
 
-Run RoSCA
-
-Produce:
-
-THDMI.summary.json
-
-THDMI.fit_warning.txt
-
-⚙️ Configuration
+## ⚙️ **Configuration**
 
 All dataset-specific paths live in:
 
+```
 config/thdmi.yaml
-
+```
 
 Example:
 
+```yaml
 dataset: "thdmi"
 X: "tests/thdmi/data/thdmi_feature-table_filtered_samples_features.biom"
 Y: "tests/thdmi/data/nutrients_data_no_cal.csv"
 outdir: "tests/thdmi/output"
-
+```
 
 Modify these paths to run the pipeline on your own dataset.
 
-📦 Pipeline Overview
-Rule: run_rosca
+---
 
+## 📦 **Pipeline Overview**
+
+### **Rule: `run_rosca`**
 Runs the RoSCA model.
 
 Produces:
 
-THDMI.summary.json
-
-THDMI.fit_warning.txt
+- `THDMI.summary.json`
+- `THDMI.fit_warning.txt`
 
 Command structure:
 
+```bash
 python -m rosca_pipeline.rosca \
     --X <input_features> \
     --Y <input_metadata> \
     --out-directory <output_dir>
+```
 
-Optional Rules
+### **Optional Rules**
+- `preprocess` — sample/feature filtering  
+- `tune_rosca` — automated hyperparameter tuning (Optuna)  
+- `plot_rosca` — executes plotting notebook or script  
 
-preprocess — sample/feature filtering
+---
 
-tune_rosca — automated hyperparameter tuning (Optuna)
-
-plot_rosca — executes plotting notebook or script
-
-🧪 Testing with Included Dataset
+## 🧪 **Testing with Included Dataset**
 
 A miniature THDMI dataset is included:
 
+```
 tests/thdmi/data/
-
+```
 
 To dry-run:
 
+```bash
 snakemake -n
+```
 
+To run:
 
-To run only on test data:
-
+```bash
 snakemake --cores 2
-
+```
 
 Expected outputs for regression testing exist in:
 
+```
 tests/thdmi/expected/
+```
 
-🧰 Development
-Add new rules
+---
 
-Edit Snakefile:
+## 🧰 **Development**
 
+### Add new rules
+
+Edit `Snakefile`:
+
+```python
 rule my_step:
     input:
     output:
     conda:
     shell:
+```
 
-Run a specific rule
+### Run a specific rule
+
+```bash
 snakemake run_rosca --use-conda
+```
 
-Remove outputs
+### Remove outputs
+
+```bash
 snakemake --delete-all-output
+```
 
-📤 Version Control
+---
 
-Typical Git setup:
+## 📤 **Version Control**
 
+```bash
 git init
 git add .
 git commit -m "Initial Snakemake RoSCA pipeline"
 git branch -M main
 git remote add origin <your-github-repo-url>
 git push -u origin main
+```
 
-📚 Citation
+---
+
+## 📚 **Citation**
 
 If you use this pipeline or RoSCA in your work, please cite the original RoSCA method and this repository.
 
-📧 Contact
+---
+
+## 📧 **Contact**
 
 For questions or contributions, please open an issue or submit a pull request.
