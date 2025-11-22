@@ -1,7 +1,7 @@
-# **RoSCA Pipeline**
-*A reproducible Snakemake workflow for running the Robust Sparse Canonical Analysis (RoSCA) model on microbiome and dietary datasets.*
+# **Robust Sparse CCA for Microbiome Analysis Pipeline**
+*A reproducible Snakemake workflow for running Robust Sparse Canonical Analysis model on microbiome and metadata/other 'omic datasets.*
 
-This repository provides an end-to-end, reproducible workflow for running **RoSCA** on the THDMI dataset (or any microbiome × metadata dataset).  
+This repository provides an end-to-end, reproducible workflow for running **RoSCA** on a microbiome × Y dataset).  
 It includes:
 
 - A **Snakemake workflow**
