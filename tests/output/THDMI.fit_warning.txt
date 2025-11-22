@@ -1,0 +1,1 @@
+Final fit failed or was skipped: 'ElasticCCA' object has no attribute 'weights'

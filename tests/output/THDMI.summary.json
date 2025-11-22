@@ -1,0 +1,28 @@
+{
+  "regime": "A_smallY",
+  "n_splits": 3,
+  "best": {
+    "mean_r": 0.034802200575644385,
+    "mean_z": 0.03481626152452844,
+    "params": {
+      "alpha_x": 0.1,
+      "alpha_y": 0.1,
+      "l1_x": 0.01,
+      "l1_y": 0.0
+    },
+    "folds": 3
+  },
+  "chosen": {
+    "mean_r": 0.034802200575644385,
+    "mean_z": 0.03481626152452844,
+    "params": {
+      "alpha_x": 0.1,
+      "alpha_y": 0.1,
+      "l1_x": 0.01,
+      "l1_y": 0.0
+    },
+    "folds": 3
+  },
+  "stageA_count": 1,
+  "stageB_count": 12
+}

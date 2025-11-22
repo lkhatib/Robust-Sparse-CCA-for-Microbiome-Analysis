@@ -1,0 +1,9 @@
+{
+  "regime": "A_smallY",
+  "n_splits": 3,
+  "best": null,
+  "chosen": null,
+  "stageA_count": 0,
+  "stageB_count": 0,
+  "note": "No viable models after sparsity/ridge retries. Try reducing features or raising alpha bounds."
+}
