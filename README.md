@@ -77,7 +77,7 @@ Snakemake will:
 
 ---
 
-## ⚙️ **Configuration**
+## **Configuration**
 
 All dataset-specific paths live in:
 
