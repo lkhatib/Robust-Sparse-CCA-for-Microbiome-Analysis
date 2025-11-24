@@ -15,7 +15,7 @@ The workflow performs:
 
 ---
 
-## 🔧 **Repository Structure**
+## **Repository Structure**
 
 ```
 rosca-pipeline/
@@ -50,7 +50,7 @@ rosca-pipeline/
 
 ---
 
-## 🚀 **Quickstart**
+## **Quickstart**
 
 ### **Install Snakemake**
 
@@ -98,7 +98,7 @@ Modify these paths to run the pipeline on your own dataset.
 
 ---
 
-## 📦 **Pipeline Overview**
+## **Pipeline Overview**
 
 ### **Rule: `run_rosca`**
 Runs the RoSCA model.
@@ -124,7 +124,7 @@ python -m rosca_pipeline.rosca \
 
 ---
 
-## 🧪 **Testing with Included Dataset**
+## **Testing with Included Dataset**
 
 A miniature THDMI dataset is included:
 
@@ -152,7 +152,7 @@ tests/thdmi/expected/
 
 ---
 
-## 🧰 **Development**
+## **Development**
 
 ### Add new rules
 
@@ -180,7 +180,7 @@ snakemake --delete-all-output
 
 ---
 
-## 📤 **Version Control**
+## **Version Control**
 
 ```bash
 git init
